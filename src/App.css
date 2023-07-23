@@ -1,38 +1,147 @@
+*{
+  margin: 0;
+  padding: 0;
+  /* font-family: monospace; */
+  /* font-size: 1.02em; */
+}
+
+body{
+}
+
+/* general */
+.bold{
+  font-weight: bold;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.spaced{
+  letter-spacing: .5px;
+}
+
+
+
 .App {
+  /* text-align: center; */
+  background-color: black;
+  color: rgba(255, 255, 255, 0.897);
+  width: 390px;
+  height: 844px;
+  border: 1px solid orange;
+  margin: auto;
+}
+
+
+/* profile */
+.title{
   text-align: center;
+  margin-top: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.edit{
+  position: relative;
+  z-index: 2;
+  top: -18px;
+  left: 350px;
+  font-size: .7em;
+  letter-spacing: .8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.edit:hover{
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.profileList{
+  /* border: 1px solid red; */
+  margin: 160px auto;
+  width: 200px;
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+  align-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.profileContainer{
+  /* border: 1px solid white; */
+  width: fit-content;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.profileContainer:hover{
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.profileContainer:hover img{
+  opacity: .8;
+  height: 77px;
+  width: 77px;
+  /* margin: 0 3px 5px 3px; */
+  margin: 0 1px 3px 1px;
+}
+
+.profileContainer:hover .profileName{
+  opacity: .9;
+}
+
+
+.avatar{
+  height: 80px;
+  width: 80px;
+  /* border: 1px solid hotpink; */
+  border-radius: 6px;
+}
+
+.profileName{
+  /* border: 1px solid lime; */
+  margin-top: 5px;
+  letter-spacing: .5px;
+  font-size: .8em;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* HOME */
+.home{
+  border: 1px solid lime;
+  margin: 10px;
+  height: 40px;
+  height: 100%;
+}
+/* HEADER */
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid purple;
+  margin: 3px 0;
+  height: 40px;
+}
+
+.header .left, .header .right{
+  margin: 0 5px;
+  border: 1px solid red;
+}
+
+.header .right{
+  display: flex;
+  align-content: center;
+}
+
+.header img{
+  height: 20px;
+  width: 20px;
+  border: 1px solid hotpink;
+  margin: 0 5px;
+}
+
+.search{
+  transform: rotate(90deg); /* flip */
 }

@@ -1,14 +1,18 @@
-import './App.css';
 import { useContext } from 'react';
-import { ApiContext } from './contexts/api_context';
+import { AppContext } from './contexts/app_context';
+import './App.css';
+import SignIn from './components/SignIn';
+import HomeScreen from './components/HomeScreen'
 
 function App() {
 
-  let { test } = useContext(ApiContext)
-  console.log(test)
+  let { currentProfile } = useContext(AppContext)
 
   return (
     <div className="App">
+
+      { currentProfile ? <HomeScreen /> : <SignIn /> }
+      
     </div>
   );
 }
