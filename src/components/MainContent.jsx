@@ -42,32 +42,9 @@ const MainContent = ( {parent} ) => {
             </div>
         )
     }
-
-    // if(parent !== 'home'){
-    //     showList.filter((show, index) => {
-    //         console.log(show.genres.includes(currentGenre))
-    //         return show.genres.includes(currentGenre) ? null : delete showList[index]
-    //     })
-    // }
-
-    console.log('after FILTER', showList)
-
+    
   return parent === "home" ? noGenre() : yesGenre()
 
-    // return(
-    //     <div className='main'>
-    //     <MainShow />
-    //     <div className="shows">
-    //     { showList.map((show, index) => {
-    //         return (
-    //         <div className='imgContainer pointer' onClick={() => console.log(show)}>
-    //             <img src={show.image.original} alt='tv show pic' key={index} className='small'/>
-    //         </div>
-    //         )
-    //     }) }
-    //     </div>
-    // </div>
-    // )
 }
 
 export default MainContent
