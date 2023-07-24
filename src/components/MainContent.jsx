@@ -10,7 +10,7 @@ const MainContent = () => {
     <div className='main'>
       {showList.map((show, index) => {
         return (
-        <div className='imgContainer'>
+        <div className='imgContainer pointer'>
             <img src={show.image.medium} alt='tv show pic' key={index} className='small'/>
         </div>
         )

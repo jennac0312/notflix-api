@@ -18,6 +18,7 @@ const AppContextProvider = (props) => {
     const [ searchInput, setSearchInput ] = useState("")
     const [ filteredShows, setFilteredShows ] = useState(showList) //based on genre
     const [ topShow, setTopShow ] = useState(showList[getRandomInt(0,showList.length)]) // for main pic at top
+    
 
     const [ myList, setMyList ] = useState([])
     let allGenres = [] // need to add myList
@@ -81,7 +82,7 @@ const AppContextProvider = (props) => {
             topShow, setTopShow,
             allGenres
         }}>
-            
+
             {props.children}
         </AppContext.Provider>
     )

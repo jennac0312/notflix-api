@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react"
 import { AppContext } from "../contexts/app_context"
-import Header from "./Header"
-import Nav from "./Nav"
-import MainContent from './MainContent'
-import Footer from "./Footer"
+import Header from "../components/Header"
+import Nav from "../components/Nav"
+import MainContent from '../components/MainContent'
+import Footer from "../components/Footer"
 
-const HomeScreen = () => {
+const Home = () => {
 
     let { currentProfile, fetchData, showList } = useContext(AppContext)
 
@@ -24,4 +24,4 @@ const HomeScreen = () => {
   )
 }
 
-export default HomeScreen
+export default Home

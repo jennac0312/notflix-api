@@ -2,7 +2,9 @@ import { useContext, useEffect } from 'react';
 import { AppContext } from './contexts/app_context';
 import './App.css';
 import SignIn from './components/SignIn';
-import HomeScreen from './components/HomeScreen'
+import Home from './pages/Home'
+import Categories from './pages/Categories';
+import { Routes, Route } from 'react-router-dom';
 import LoadingScreen from './components/LoadingScreen';
 
 function App() {
@@ -13,7 +15,16 @@ function App() {
     <div className="App">
         {/* <LoadingScreen parent="app" /> */}
 
-      {currentProfile ? <HomeScreen /> : <SignIn />}
+      {/* {currentProfile ? <HomeScreen /> : <SignIn />} */}
+
+      <Routes>
+        <Route path="/" element={<LoadingScreen />}/>
+        <Route path="/signin" element={<SignIn />}/>
+        <Route path="/home" element={<Home />}/>
+        <Route path="/categories" element={<Categories />} />
+        <Route path="*" element={<h1>you are lost</h1>} />
+        <Route/>
+      </Routes>
     </div>
   );
 }
