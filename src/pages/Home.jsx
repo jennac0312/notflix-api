@@ -9,16 +9,11 @@ const Home = () => {
 
     let { currentProfile, fetchData, showList } = useContext(AppContext)
 
-    // useEffect(() => {
-    //     fetchData()
-    //     console.log(showList)
-    // }, [currentProfile])
-
   return (
     <div className='home'>
         <Header />
         <Nav />
-        <MainContent />
+        <MainContent parent="home" />
         <Footer />
     </div>
   )

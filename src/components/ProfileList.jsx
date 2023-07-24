@@ -4,10 +4,10 @@ import Profile from './Profile'
 
 const ProfileList = () => {
 
-    let { profiles } = useContext(AppContext)
+    let { profiles, setCount } = useContext(AppContext)
 
   return (
-    <div className=''>
+    <div className='' onClick={() => setCount((prev) => prev + 1)}>
         <h3 className='title'>Who's Watching?</h3>
         <p className='edit bold'>Edit</p>
         <div className='profileList'>

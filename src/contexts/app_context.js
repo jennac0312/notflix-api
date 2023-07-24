@@ -18,7 +18,7 @@ const AppContextProvider = (props) => {
     const [ searchInput, setSearchInput ] = useState("")
     const [ filteredShows, setFilteredShows ] = useState(showList) //based on genre
     const [ topShow, setTopShow ] = useState(showList[getRandomInt(0,showList.length)]) // for main pic at top
-    
+    const [ currentGenre, setCurrentGenre ] = useState(null)
 
     const [ myList, setMyList ] = useState([])
     let allGenres = [] // need to add myList
@@ -34,13 +34,26 @@ const AppContextProvider = (props) => {
         const response = await axios.get(URL)
         console.log(response.data)
         setShowList( response.data )
-
+        
         list = response.data
+    }
+    
+    const fetchFilteredData = async() => {
+        console.log('%cFILTERING....', 'color: red;')
+        const response = await axios.get(SEARCH_URL)
+        console.log(response.data)
+        setFilteredShows( response.data )
+        console.log(filteredShows)
     }
     
     useEffect(() => {
         fetchData()
+        setTopShow(showList[getRandomInt(0,showList.length)])
     }, []) //get data off rip
+
+    useEffect(() => {
+        fetchFilteredData()
+    }, [searchInput]) 
     
     // get all genres
     const getAllGenres = () => {
@@ -71,6 +84,18 @@ const AppContextProvider = (props) => {
         return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
     }
 
+
+    let arr = []
+    // sorting shows by genre
+    const sort = () => {
+        showList.forEach((show) => {
+            let genre = show.genres
+            console.log(genre.includes("Crime"))
+        })
+        console.log(allGenres.keys())
+    }
+    sort()
+
     return(
         <AppContext.Provider value={{
             profiles, currentProfile, setCurrentProfile, 
@@ -80,7 +105,7 @@ const AppContextProvider = (props) => {
             searchInput, setSearchInput,
             filteredShows, setFilteredShows,
             topShow, setTopShow,
-            allGenres
+            allGenres, currentGenre, setCurrentGenre
         }}>
 
             {props.children}
