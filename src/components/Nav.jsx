@@ -2,9 +2,12 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../contexts/app_context'
 
-const Nav = (  ) => {
+const Nav = ( {genre} ) => {
     
     let { currentGenre, setCurrentGenre } = useContext(AppContext)
+
+    console.log('CURRENT', currentGenre)
+    console.log('GENRE', genre)
 
     const noGenre = () => {
         return (

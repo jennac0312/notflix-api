@@ -11,11 +11,17 @@ const Header = () => {
         <p className='bold spaced'>For {currentProfile.name}</p>
       </div>
       <div className="right">
-        <img src='https://www.pngfind.com/pngs/m/70-702301_cast-icon-chromecast-logo-black-and-white-johns.png' alt='' className='pointer icon '/>
+        <Link to="/cast">
+          <img src='https://static.thenounproject.com/png/708976-200.png' alt='' className='pointer icon invert'/>
+        </Link>
+
         <Link to="/search">
             <img src='https://icon-library.com/images/white-search-icon-transparent-background/white-search-icon-transparent-background-1.jpg' alt='' className='pointer icon search'/>
         </Link>
-        <img src={currentProfile.image} alt='' className='pointer icon '/>
+
+        <Link to="/signin">
+          <img src={currentProfile.image} alt='' className='pointer icon '/>
+        </Link>
       </div>
     </div>
   )

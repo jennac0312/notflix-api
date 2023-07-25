@@ -3,7 +3,7 @@ import { AppContext } from '../contexts/app_context'
 
 const MainShow = () => {
 
-    let { showList, topShow, setTopShow, getRandomInt, filteredShows, categoryShows } = useContext(AppContext)
+    let { showList, topShow, setTopShow, getRandomInt, filteredShows, categoryShows, logAndSet, addToMyList } = useContext(AppContext)
     console.log('top show is:', topShow)
 
     useEffect(() => {
@@ -13,7 +13,7 @@ const MainShow = () => {
     }, [])
 
   return (
-    <div className='mainShow pointer' onClick={() => console.log(topShow)}>
+    <div className='mainShow pointer' onClick={() => logAndSet(topShow, topShow.id)}>
       <img src={topShow?.image.original}/> 
 
       <div className="adjectives">
@@ -22,7 +22,7 @@ const MainShow = () => {
 
       <div className="buttons">
         <button className='pointer bold play'><span className='symbol'>▶</span> Play</button>
-        <button className='pointer bold list'><span className='symbol'>✓</span> My List</button>
+        <button className='pointer bold list' onClick={() => addToMyList(topShow)}><span className='symbol plus'>+</span> My List</button>
       </div>
     </div>
   )

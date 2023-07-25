@@ -1,9 +1,9 @@
 import React from 'react'
-import ProfileList from './ProfileList'
+import ProfileList from '../components/ProfileList'
 
 const SignIn = () => {
   return (
-    <div>
+    <div className='signIn'>
       <ProfileList />
     </div>
   )

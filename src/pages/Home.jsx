@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div className='home'>
         <Header />
-        <Nav />
+        {/* <Nav /> */}
         <MainContent parent="home" />
         <Footer />
     </div>

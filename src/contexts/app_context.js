@@ -8,6 +8,8 @@ export const AppContext = createContext()
 
 // function to access
 const AppContextProvider = (props) => {
+    console.log('%cNOTFLIX', 'color: crimson; font-size: 40px;')
+    console.log('%cdah duh dum', 'color: crimson; font-size: 20px;')
     // models
     const [ currentProfile, setCurrentProfile ] = useState(null)
     
@@ -21,6 +23,9 @@ const AppContextProvider = (props) => {
     const [ currentGenre, setCurrentGenre ] = useState(null)
     const [ categoryShows, setCategoryShows ] = useState(null)
 
+    const [ seasons, setSeasons ] = useState({})
+    const [ episodes, setEpisodes ] = useState({})
+
     const [ myList, setMyList ] = useState([])
     let allGenres = [] // need to add myList
 
@@ -28,7 +33,7 @@ const AppContextProvider = (props) => {
     const URL = `https://api.tvmaze.com/shows`
     const  SEARCH_URL = `https://api.tvmaze.com/search/shows?q=${searchInput}` //not case sensitive, ignores special chars
     // console.log(URL)
-    
+
     let list 
     // fetch data
     const fetchData = async () => {
@@ -47,6 +52,18 @@ const AppContextProvider = (props) => {
         console.log(filteredShows)
     }
     
+    const fetchShowDetails = async(showID, deets) => {
+        const response = await axios.get(`https://api.tvmaze.com/shows/${showID}/${deets}`)
+
+        console.log(`https://api.tvmaze.com/shows/${showID}/${deets}`)
+
+        console.log('DETAILS DATA:', response.data)
+        deets === "seasons" ? setSeasons(response.data) : setEpisodes(response.data)
+
+        console.log('SEASONS',seasons)
+        console.log('EPISODES',episodes)
+    }
+
     useEffect(() => {
         fetchData()
         setTopShow(showList[getRandomInt(0,showList.length)])
@@ -59,6 +76,26 @@ const AppContextProvider = (props) => {
     useEffect(() => {
         setCategoryShows(() => sortShows())
     }, [currentGenre])
+
+    useEffect(() => {
+        // fetchShowDetails(currentShow.id, 'seasons' )
+        // fetchShowDetails(currentShow.id, 'episodes' )
+
+        console.log('SEASONS', seasons)
+        console.log('EPISODES', episodes)
+    }, [seasons, episodes])
+
+    const logAndSet = (show, id) => {
+        fetchShowDetails(id, 'seasons' )
+        fetchShowDetails(id, 'episodes' )
+        
+        console.log('clicked show is:', show)
+        // console.log(show.id)
+        setCurrentShow(show)
+        console.log('JUST CLICKED appcontext', currentShow) //one behind from show ...
+        console.log('SEASONS',seasons)
+        console.log('EPISODES',episodes)
+    }
     
     // get all genres
     const getAllGenres = () => {
@@ -80,6 +117,17 @@ const AppContextProvider = (props) => {
         setCurrentShow(clicked)
     }
 
+    // add to myList
+    const addToMyList = (show) => {
+        console.log('ADDING TO MY LIST', show)
+
+        if(myList.includes(show)){
+            console.log('SHOW ALREADY ADDED')
+        } else {
+            setMyList([...myList, show])
+        }
+        console.log('MY LIST:', myList)
+    }
 
 
     // random num
@@ -130,7 +178,9 @@ const AppContextProvider = (props) => {
             allGenres, currentGenre, setCurrentGenre,
             getRandomInt,
             categoryShows, setCategoryShows,
-            sortByGenre
+            sortByGenre,
+            seasons, episodes, logAndSet,
+            addToMyList, myList, setMyList
         }}>
 
             {props.children}
