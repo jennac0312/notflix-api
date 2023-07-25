@@ -37,7 +37,8 @@ a{
 }
 
 ::-webkit-scrollbar{
-  display: none;
+  display: visible;
+  /* color: red; */
 }
 
 
@@ -277,7 +278,7 @@ a{
 
 .main{
   border: 1px solid orange;
-  height: 660px;
+  height: 695px;
   overflow: scroll;
 }
 
@@ -304,7 +305,7 @@ a{
 
 .categoriesPage{
   height: 100%;
-  background-color: lightslategray;
+  background-color: #2c2e2ca9;
   overflow: scroll;
 }
 
@@ -315,7 +316,7 @@ a{
 }
 
 .categoriesPage li {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 30%;
   padding: 20px;
   opacity: .6;
@@ -436,6 +437,7 @@ input{
   outline: none;
   padding-left: 20px;
   text-align: center;
+  letter-spacing: 1.5px;
 }
 
 input::placeholder{
@@ -458,8 +460,11 @@ input::placeholder{
   /* border: 1px solid red; */
 }
 
-.searchResultContainer img{
-  height: 100px;
+.searchResultContainer .imgContainer img{
+  /* height: 100px; */
+  max-height: 100px;
+  /* max-width: 80px; */
+  width: 70px;
 }
 
 .searchResultContainer .title{
@@ -493,6 +498,7 @@ input::placeholder{
 
 /* FOOTER */
 .footer{
+  background-color: #2c2e2ccb;
   border: 1px solid purple;
   display: flex;
   justify-content: space-around;
@@ -501,11 +507,13 @@ input::placeholder{
 
 .footer div {
   /* border: 1px solid red; */
+  width: 33.3333%;
   height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: -5px;
 
   cursor: pointer;
 }

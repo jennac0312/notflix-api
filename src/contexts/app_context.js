@@ -19,6 +19,7 @@ const AppContextProvider = (props) => {
     const [ filteredShows, setFilteredShows ] = useState(showList) //based on genre
     const [ topShow, setTopShow ] = useState(showList[getRandomInt(0,showList.length)]) // for main pic at top
     const [ currentGenre, setCurrentGenre ] = useState(null)
+    const [ categoryShows, setCategoryShows ] = useState(null)
 
     const [ myList, setMyList ] = useState([])
     let allGenres = [] // need to add myList
@@ -54,6 +55,10 @@ const AppContextProvider = (props) => {
     useEffect(() => {
         fetchFilteredData()
     }, [searchInput]) 
+
+    useEffect(() => {
+        setCategoryShows(() => sortShows())
+    }, [currentGenre])
     
     // get all genres
     const getAllGenres = () => {
@@ -85,17 +90,34 @@ const AppContextProvider = (props) => {
     }
 
 
-    let arr = []
     // sorting shows by genre
-    const sort = () => {
+    const sortShows = () => {
+        let sorted = []
         showList.forEach((show) => {
-            let genre = show.genres
-            console.log(genre.includes("Crime"))
+            show.genres.includes(currentGenre) && sorted.push(show)
         })
-        console.log(allGenres.keys())
+        console.log('SORTED',sorted)
+        return sorted
     }
-    sort()
 
+    // -------------------------------------------------------------------
+    // -------------------------------------------------------------------
+
+
+    const sortByGenre = (show, genres) => {
+        console.log(show)
+        console.log(genres)
+
+        console.log(typeof allGenres)
+
+
+    }
+
+    // sortByGenre()
+
+    // -------------------------------------------------------------------
+    // -------------------------------------------------------------------
+    
     return(
         <AppContext.Provider value={{
             profiles, currentProfile, setCurrentProfile, 
@@ -105,7 +127,10 @@ const AppContextProvider = (props) => {
             searchInput, setSearchInput,
             filteredShows, setFilteredShows,
             topShow, setTopShow,
-            allGenres, currentGenre, setCurrentGenre
+            allGenres, currentGenre, setCurrentGenre,
+            getRandomInt,
+            categoryShows, setCategoryShows,
+            sortByGenre
         }}>
 
             {props.children}

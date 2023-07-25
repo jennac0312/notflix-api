@@ -4,7 +4,7 @@ import { AppContext } from '../contexts/app_context'
 
 const Nav = (  ) => {
     
-    let { currentGenre } = useContext(AppContext)
+    let { currentGenre, setCurrentGenre } = useContext(AppContext)
 
     const noGenre = () => {
         return (
@@ -23,10 +23,10 @@ const Nav = (  ) => {
         return (
             <div className='nav cNav'>
                 <Link to="/home">
-                    <button className='pointer bold exitButton'>✖</button>
+                    <button className='pointer bold exitButton' onClick={() => setCurrentGenre(null)}>✖</button>
                 </Link>
                 <Link to="/categories">
-                    <button className='pointer bold spaced category'>{currentGenre}<span className='arrow bold'>▾</span></button>
+                    <button className='pointer spaced category'>{currentGenre}<span className='arrow bold'>▾</span></button>
                 </Link>
             </div>
         )
