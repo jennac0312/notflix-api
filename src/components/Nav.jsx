@@ -35,7 +35,7 @@ const Nav = ( {genre} ) => {
         )
     }
 
-    return currentGenre ? isGenre() : noGenre()
+    return currentGenre  && currentGenre !== "My List" ? isGenre() : noGenre()
 }
 
 export default Nav

@@ -21,7 +21,7 @@ const MainContent = ( {parent, genre} ) => {
 
                 <div className="shows">
                     {showList.map((show, index) => {
-                        return <ShowIcon show={show} index={index}/>
+                        return <ShowIcon show={show} index={index} key={index}/>
                     })}
                 </div>
 
@@ -39,7 +39,7 @@ const MainContent = ( {parent, genre} ) => {
                 {showList.map((show, index) => {
                     return (
                         show.genres.includes(currentGenre) ? 
-                        <div className='imgContainer pointer' onClick={() => console.log('JUST CLICKED',show)}>
+                        <div className='imgContainer pointer' onClick={() => console.log('JUST CLICKED',show)} key={index}>
                             <img src={show.image.original} alt='tv show pic' key={index} className='small'/>
                         </div> : null
                     )
