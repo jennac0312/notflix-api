@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/notflix-app/static/css/main.d52d034f.css",
+    "main.css": "/notflix-app/static/css/main.1c821d41.css",
     "main.js": "/notflix-app/static/js/main.faba5ee9.js",
     "index.html": "/notflix-app/index.html",
-    "main.d52d034f.css.map": "/notflix-app/static/css/main.d52d034f.css.map",
+    "main.1c821d41.css.map": "/notflix-app/static/css/main.1c821d41.css.map",
     "main.faba5ee9.js.map": "/notflix-app/static/js/main.faba5ee9.js.map"
   },
   "entrypoints": [
-    "static/css/main.d52d034f.css",
+    "static/css/main.1c821d41.css",
     "static/js/main.faba5ee9.js"
   ]
 }
